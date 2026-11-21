@@ -80,7 +80,7 @@ await page.addInitScript((cfg) => {
   window.__CAPTURE = true;
   window.__SIM_CONFIG = cfg;
 }, config);
-await page.goto(pathToFileURL(html).href + (SEEK ? '?render' : ''));
+await page.goto(pathToFileURL(html).href + (SEEK ? '?render' : '') + (process.env.FAST ? (SEEK ? '&fast' : '?fast') : ''));
 await page.waitForFunction(
   (seek) => (seek ? typeof window.seek === 'function' : window.SIM && window.SIM.ready),
   SEEK,

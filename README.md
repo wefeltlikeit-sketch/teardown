@@ -34,12 +34,14 @@ Ask Claude Code in plain words:
 
 > Make a teardown of a hydraulic excavator arm and record a 20-second video of it.
 
-Or open one of the 3 examples first:
+Or open one of the 5 examples first:
 
 ```
 node sims/build.mjs v8-live          # teardown-out/dist/v8-live.html
 node sims/build.mjs cessna-live
 node sims/build.mjs strandbeest-live
+node sims/build.mjs raider-live
+node sims/build.mjs lair-live
 ```
 
 ## What is inside
@@ -49,8 +51,10 @@ node sims/build.mjs strandbeest-live
 | `SKILL.md` | What Claude reads: how a machine is built, the rules that make it look right, the review loop. |
 | `sims/kit/` | Runtime, stage, shader warm-up. |
 | `sims/v8-*`, `sims/cessna-*`, `sims/strandbeest-*` | 3 complete machines. `-shared` is the machine, `-live` the page you drive, `-film` the recorded tour. |
+| `sims/raider-*` | Vantor RX-9 Kestrel, an original fictional strike drone: one actuator, a crosshead with twin racks and two 36-tooth sector gears swing both wings 95°; vectoring nozzles for vertical launch. |
+| `sims/lair-*` | Emberfall Caldera, an original fictional volcano lair: a 16-tooth pinion turns a 240-tooth ring that opens an 8-blade iris roof, then four screw jacks lift the Kestrel 40 m to the crater. |
 | `sims/build.mjs` | Bundles a machine into one HTML file, three.js and fonts inlined. |
-| `sims/capture.mjs` | Renders the film frame by frame to a 60 fps mp4, or to review sheets of stills. |
+| `sims/capture.mjs` | Renders the film frame by frame to a 60 fps mp4, or to review sheets of stills. `FAST=1` adds `?fast` to the page, and films that read it drop AO, MSAA and shadow resolution so a software renderer can finish (the `lair` film reads it). |
 | `sfx/`, `run_sfx.py` | Procedural sound on the film's timeline, mastered to −14 LUFS. |
 
 ## Credits
